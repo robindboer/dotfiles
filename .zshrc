@@ -110,4 +110,9 @@ if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
 fi
 
+# autostart Xorg
+if systemctl -q is-active graphical.target && [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
+  exec startx
+fi
+
 source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
