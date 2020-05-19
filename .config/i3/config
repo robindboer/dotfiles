@@ -187,6 +187,12 @@ focus_follows_mouse no
 # Set a pixel border
 default_border pixel
 
+# Start the authentication agent
+exec --no-startup-id "/usr/bin/lxpolkit"
+
+# Start the dunst notification server
+exec --no-startup-id "/usr/bin/dunst"
+
 # Window assignments
 assign [class="code-oss"] $ws1
 assign [class="firefox"] $ws2
