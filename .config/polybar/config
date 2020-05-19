@@ -1,11 +1,11 @@
 [colors]
 background = #2E3440
-foreground = #D8DEE9
+foreground = #81A1C1
 
 [module/i3]
 type = internal/i3
 strip-wsnumbers = true
-label-focused-foreground = #5E81AC
+label-focused-foreground = #D8DEE9
 label-separator-padding = 2
 
 [module/cpu]
