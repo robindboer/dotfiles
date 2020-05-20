@@ -1,34 +1,27 @@
 draw_bold_text_with_bright_colors: true
 
 colors:
-
   primary:
-    background: '#282a36'
-    foreground: '#eff0eb'
-
+    background: '0x2E3440'
+    foreground: '0xD8DEE9'
   cursor:
-    cursor: '#97979b'
-
-  selection:
-    text:       '#282a36'
-    background: '#feffff'
-
+    text: '0x2E3440'
+    cursor: '0xD8DEE9'
   normal:
-    black:   '#282a36'
-    red:     '#ff5c57'
-    green:   '#5af78e'
-    yellow:  '#f3f99d'
-    blue:    '#57c7ff'
-    magenta: '#ff6ac1'
-    cyan:    '#9aedfe'
-    white:   '#f1f1f0'
-
+    black: '0x3B4252'
+    red: '0xBF616A'
+    green: '0xA3BE8C'
+    yellow: '0xEBCB8B'
+    blue: '0x81A1C1'
+    magenta: '0xB48EAD'
+    cyan: '0x88C0D0'
+    white: '0xE5E9F0'
   bright:
-    black:   '#686868'
-    red:     '#ff5c57'
-    green:   '#5af78e'
-    yellow:  '#f3f99d'
-    blue:    '#57c7ff'
-    magenta: '#ff6ac1'
-    cyan:    '#9aedfe'
-    white:   '#eff0eb'
+    black: '0x4C566A'
+    red: '0xBF616A'
+    green: '0xA3BE8C'
+    yellow: '0xEBCB8B'
+    blue: '0x81A1C1'
+    magenta: '0xB48EAD'
+    cyan: '0x8FBCBB'
+    white: '0xECEFF4'
