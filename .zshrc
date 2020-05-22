@@ -105,6 +105,10 @@ fpath+=$HOME/.zsh/pure
 autoload -U promptinit; promptinit
 prompt pure
 
+# Add pyenv to path
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+
 # Evaluate pyenv variables for shims support
 if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
