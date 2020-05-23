@@ -122,4 +122,8 @@ if systemctl -q is-active graphical.target && [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]
   exec startx
 fi
 
+# fixes a issue with git autocompletion (https://stackoverflow.com/a/9810485)
+__git_files () {
+    _wanted files expl 'local files' _files  }
+
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
