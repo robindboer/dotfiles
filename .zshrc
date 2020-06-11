@@ -107,6 +107,9 @@ fpath+=$HOME/.zsh/pure
 autoload -U promptinit; promptinit
 prompt pure
 
+# Add npm bin to path
+export PATH=~/.npm-global/bin:$PATH
+
 # Add go bin to path
 export PATH="$PATH:$HOME/go/bin"
 
