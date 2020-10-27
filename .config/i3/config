@@ -196,4 +196,5 @@ exec --no-startup-id "/usr/bin/dunst"
 # Window assignments
 assign [class="code-oss"] $ws1
 assign [class="firefox"] $ws2
+assign [class="Chromium"] $ws2
 assign [class="Slack"] $ws3
