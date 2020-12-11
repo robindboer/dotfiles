@@ -29,6 +29,7 @@ colors:
     cyan: '0x8FBCBB'
     white: '0xECEFF4'
 font:
+  size: 10
   normal:
     family: Inconsolata-g
     style: Regular
