@@ -37,6 +37,10 @@ call plug#begin('~/.config/nvim/plugged')
 
     Plug 'christoomey/vim-tmux-navigator'
 
+    Plug 'psf/black', { 'branch': 'stable' }
+
+    Plug 'fisadev/vim-isort'
+
 call plug#end()
 
 let g:lightline = {
@@ -55,6 +59,9 @@ colorscheme nord
 set number
 set relativenumber
 set noshowmode
+
+autocmd BufWritePre *.py execute ':Black'
+autocmd BufWritePre *.py execute ':Isort'
 
 set updatetime=100
 
