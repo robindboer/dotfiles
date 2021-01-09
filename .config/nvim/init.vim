@@ -41,6 +41,10 @@ call plug#begin('~/.config/nvim/plugged')
 
     Plug 'fisadev/vim-isort'
 
+    Plug 'jiangmiao/auto-pairs'
+
+    Plug 'scrooloose/nerdcommenter'
+
 call plug#end()
 
 let g:lightline = {
