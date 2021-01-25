@@ -1,5 +1,3 @@
-let mapleader = " "
-
 if ! filereadable(expand('~/.config/nvim/autoload/plug.vim'))
   echo "Downloading junegunn/vim-plug to manage plugins..."
   silent !mkdir -p ~/.config/nvim/autoload/
@@ -8,69 +6,42 @@ if ! filereadable(expand('~/.config/nvim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.config/nvim/plugged')
-    "Theme
-    Plug 'arcticicestudio/nord-vim'
+Plug 'neovim/nvim-lspconfig'
+Plug 'nvim-lua/completion-nvim'
 
-    "Status bar
-    Plug 'itchyny/lightline.vim'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
-    Plug 'preservim/nerdtree' |
-            \ Plug 'Xuyuanp/nerdtree-git-plugin'
+"Theme
+Plug 'gruvbox-community/gruvbox'
 
-    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-    Plug 'junegunn/fzf.vim'
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'tweekmonster/gofmt.vim'
+Plug 'szw/vim-maximizer'
+Plug 'airblade/vim-gitgutter'
 
-    Plug 'davidhalter/jedi-vim'
-    Plug 'deoplete-plugins/deoplete-jedi'
+Plug 'christoomey/vim-tmux-navigator'
 
-    if has('nvim')
-	Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-    else
-  	Plug 'Shougo/deoplete.nvim'
-  	Plug 'roxma/nvim-yarp'
-  	Plug 'roxma/vim-hug-neovim-rpc'
-    endif
+Plug 'psf/black', { 'branch': 'stable' }
 
-    Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
-
-    Plug 'airblade/vim-gitgutter'
-
-    Plug 'christoomey/vim-tmux-navigator'
-
-    Plug 'psf/black', { 'branch': 'stable' }
-
-    Plug 'fisadev/vim-isort'
-
-    Plug 'jiangmiao/auto-pairs'
-
-    Plug 'scrooloose/nerdcommenter'
+Plug 'fisadev/vim-isort'
 
 call plug#end()
 
-let g:lightline = {
-      \ 'colorscheme': 'nord',
-      \ }
+let mapleader = " "
 
-let g:fzf_preview_window = ['right:50%:hidden', 'ctrl-/']
+colorscheme gruvbox
 
-let g:jedi#environment_path = "env"
-let g:jedi#completions_enabled = 0
-let g:jedi#use_splits_not_buffers = "right"
-
-let g:deoplete#enable_at_startup = 1
-
-colorscheme nord
-
-set number
-set relativenumber
-set noshowmode
-
+"Python autocmd's
 autocmd BufWritePre *.py execute ':Black'
 autocmd BufWritePre *.py execute ':Isort'
+autocmd FileType python setlocal completeopt-=preview
 
-set updatetime=100
-
-"Custom key bindings
-nnoremap <silent> <C-P> :Files<CR>
-nnoremap <C-k><C-b> :NERDTreeToggle<CR>
+fun! EmptyRegisters()
+    let regs=split('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789/-"', '\zs')
+    for r in regs
+        call setreg(r, [])
+    endfor
+endfun
 
