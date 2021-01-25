@@ -55,6 +55,7 @@ let g:fzf_preview_window = ['right:50%:hidden', 'ctrl-/']
 
 let g:jedi#environment_path = "env"
 let g:jedi#completions_enabled = 0
+let g:jedi#use_splits_not_buffers = "right"
 
 let g:deoplete#enable_at_startup = 1
 
