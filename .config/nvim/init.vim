@@ -14,6 +14,7 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 "Theme
 Plug 'gruvbox-community/gruvbox'
 
+Plug 'itchyny/lightline.vim'
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
