@@ -193,6 +193,9 @@ exec --no-startup-id "/usr/bin/lxpolkit"
 # Start the dunst notification server
 exec --no-startup-id "/usr/bin/dunst"
 
+# Screenshot utility
+bindsym --release $mod+s exec "scrnsht -s /home/robin/Pictures/screenshots/"
+
 # Window assignments
 assign [class="code-oss"] $ws1
 assign [class="firefox"] $ws2
