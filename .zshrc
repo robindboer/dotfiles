@@ -99,6 +99,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 alias ssh='TERM=xterm-256color \ssh'
+alias nv="nvim"
 
 # Add the path to the pure prompt to the fpath
 fpath+=$HOME/.zsh/pure
