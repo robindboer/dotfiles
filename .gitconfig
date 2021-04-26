@@ -2,4 +2,4 @@
 	name = Robin de Boer
 	email = robindboer@gmail.com
 [core]
-	editor = nano
+	editor = nvim

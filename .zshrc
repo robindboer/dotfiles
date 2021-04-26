@@ -104,6 +104,9 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+# Set default editor Neovim
+export EDITOR="nvim"
+
 alias ssh='TERM=xterm-256color \ssh'
 alias nv="nvim"
 

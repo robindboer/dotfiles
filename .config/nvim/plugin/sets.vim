@@ -16,4 +16,3 @@ set nowrap
 set termguicolors
 set updatetime=100
 set completeopt=menuone,noinsert,noselect
-
