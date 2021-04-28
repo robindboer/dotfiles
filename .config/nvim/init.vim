@@ -31,14 +31,6 @@ let mapleader = " "
 
 colorscheme gruvbox
 
-"Automatic closing brackets
-inoremap " ""<left>
-inoremap ' ''<left>
-inoremap ( ()<left>
-inoremap [ []<left>
-inoremap { {}<left>
-inoremap {<CR> {<CR>}<ESC>O
-
 "Python autocmd's
 let g:python3_host_prog = '/home/robin/dev/neovim/env/bin/python'
 autocmd BufWritePre *.py execute ':Black'
