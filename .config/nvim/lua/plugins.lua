@@ -13,7 +13,8 @@ vim.cmd [[packadd packer.nvim]]
 return require('packer').startup(function()
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
-    use 'folke/tokyonight.nvim'
+	use 'gruvbox-community/gruvbox'
+	use 'airblade/vim-gitgutter'
     use 'christoomey/vim-tmux-navigator'
     use {
         'nvim-telescope/telescope.nvim',
@@ -27,5 +28,6 @@ return require('packer').startup(function()
 		'nvim-treesitter/nvim-treesitter',
 		config = 'vim.cmd[[TSUpdate]]'
 	}
+	use {'neoclide/coc.nvim', branch = 'release'}
 end)
 
