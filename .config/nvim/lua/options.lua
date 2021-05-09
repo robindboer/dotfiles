@@ -16,7 +16,7 @@ set_opts {
     shiftwidth = 4,
     tabstop = 4,
     softtabstop = 4,
-	completeopt = 'menuone,noinsert,noselect',
+	completeopt = 'menuone,noselect',
 	incsearch = true,
 	showmode = false,
 }

@@ -24,10 +24,16 @@ return require('packer').startup(function()
         'hoob3rt/lualine.nvim',
         requires = {'kyazdani42/nvim-web-devicons', opt = true}
     }
+	use 'neovim/nvim-lspconfig'
 	use {
 		'nvim-treesitter/nvim-treesitter',
-		config = 'vim.cmd[[TSUpdate]]'
+		requires = { 'neovim/nvim-lspconfig' },
+		run = ":TSUpdate"
 	}
-	use {'neoclide/coc.nvim', branch = 'release'}
+	use {
+		'hrsh7th/nvim-compe',
+		requires = { 'neovim/nvim-lspconfig' }
+    }
+	use 'nvim-lua/completion-nvim'
 end)
 
