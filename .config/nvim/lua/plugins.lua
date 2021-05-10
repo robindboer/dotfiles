@@ -30,10 +30,5 @@ return require('packer').startup(function()
 		requires = { 'neovim/nvim-lspconfig' },
 		run = ":TSUpdate"
 	}
-	use {
-		'hrsh7th/nvim-compe',
-		requires = { 'neovim/nvim-lspconfig' }
-    }
-	use 'nvim-lua/completion-nvim'
 end)
 
