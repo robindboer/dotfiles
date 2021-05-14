@@ -8,7 +8,7 @@ fi
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/robin/.oh-my-zsh"
+export ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -74,7 +74,7 @@ ZSH_THEME=""
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-completions)
+plugins=(git zsh-completions zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -135,11 +135,6 @@ if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
 fi
 
-# autostart Xorg
-if systemctl -q is-active graphical.target && [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
-  exec startx
-fi
-
 # fixes a issue with git autocompletion (https://stackoverflow.com/a/9810485)
 __git_files () {
     _wanted files expl 'local files' _files  }
@@ -149,5 +144,3 @@ if type rg &> /dev/null; then
   export FZF_DEFAULT_COMMAND='rg --files --hidden'
   export FZF_DEFAULT_OPTS='-m --height 50% --border'
 fi
-
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
