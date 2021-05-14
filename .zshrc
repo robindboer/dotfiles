@@ -120,6 +120,9 @@ prompt pure
 # Add npm bin to path
 export PATH=~/.npm-global/bin:$PATH
 
+# Add sbin to path
+export PATH="/usr/local/sbin:$PATH"
+
 # Add go bin to path
 export PATH="$PATH:$HOME/go/bin"
 
