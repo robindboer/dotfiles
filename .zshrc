@@ -132,11 +132,6 @@ if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
 fi
 
-# autostart Xorg
-if systemctl -q is-active graphical.target && [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
-  exec startx
-fi
-
 # fixes a issue with git autocompletion (https://stackoverflow.com/a/9810485)
 __git_files () {
     _wanted files expl 'local files' _files  }
