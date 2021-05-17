@@ -4,6 +4,6 @@ local function map(mode, lhs, rhs, opts)
   vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
-map('n', '<C-p>', '<CMD>Telescope git_files<CR>')
-map('n', '<Leader>pf', '<CMD>Telescope find_files<CR>')
-map('n', '<Leader>ps', '<CMD>Telescope grep_string<CR>')
+map('n', '<C-p>',"<cmd>lua require('telescope.builtin').git_files()<cr>")
+map('n', '<Leader>pf',"<cmd>lua require('telescope.builtin').find_files()<cr>")
+map('n', '<Leader>ps',"<cmd>lua require('telescope.builtin').grep_string()<cr>")
