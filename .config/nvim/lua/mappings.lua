@@ -6,4 +6,4 @@ end
 
 map('n', '<C-p>',"<cmd>lua require('telescope.builtin').git_files()<cr>")
 map('n', '<Leader>pf',"<cmd>lua require('telescope.builtin').find_files()<cr>")
-map('n', '<Leader>ps',"<cmd>lua require('telescope.builtin').grep_string()<cr>")
+map('n', '<Leader>ps',"<cmd>lua require('telescope.builtin').live_grep()<cr>")
