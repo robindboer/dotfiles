@@ -3,3 +3,5 @@
 	email = robindboer@gmail.com
 [core]
 	editor = nvim
+[init]
+	defaultBranch = master
