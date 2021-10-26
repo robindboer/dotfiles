@@ -1,63 +1,44 @@
 vim.g.mapleader = ' '
 
-require('plugins')
-require('options')
-require('mappings')
+require('sets')
+require('telescope')
 require('lsp')
 
-vim.cmd[[colorscheme gruvbox]]
-
-require('lualine').setup {
-  options = {
-    theme = 'gruvbox',
-	section_separators = '',
-	component_separators = '',
-  }
-}
-
-vim.g.completion_matching_strategy_list = { 'exact', 'substring', 'fuzzy' }
-
-local check_back_space = function()
-  local col = vim.fn.col('.') - 1
-  return col == 0 or vim.fn.getline('.'):sub(col, col):match('%s')
+local fn = vim.fn
+local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+if fn.empty(fn.glob(install_path)) > 0 then
+  packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
 end
 
-local cmp = require('cmp')
-cmp.setup {
-	snippet = {
-        expand = function(args)
-            vim.fn["vsnip#anonymous"](args.body)
-        end,
-    },
-	mapping = {
-        ['<CR>'] = cmp.mapping.confirm({
-            behavior = cmp.ConfirmBehavior.Insert,
-        }),
-		['<Tab>'] = function(fallback)
-            if vim.fn.pumvisible() == 1 then
-                vim.fn.feedkeys(vim.api.nvim_replace_termcodes('<C-n>', true, true, true), 'n')
-            elseif check_back_space() then
-				vim.fn.feedkeys(vim.api.nvim_replace_termcodes('<Tab>', true, true, true), 'n')
-			elseif vim.fn['vsnip#available']() == 1 then
-                vim.fn.feedkeys(vim.api.nvim_replace_termcodes('<Plug>(vsnip-expand-or-jump)', true, true, true), '')
-            else
-                fallback()
-            end
-        end,
-		['<S-Tab>'] = function(fallback)
-            if vim.fn.pumvisible() == 1 then
-                vim.fn.feedkeys(vim.api.nvim_replace_termcodes('<C-p>', true, true, true), 'n')
-            else
-                fallback()
-            end
-        end,
-	},
-    sources = {
-        { name = 'nvim_lsp' },
-        { name = 'nvim_lua' },
-        { name = 'calc' },
-        { name = 'buffer' },
-        { name = 'path' },
-        { name = 'vsnip' },
-    },
-}
+return require('packer').startup(function(use)
+  use 'gruvbox-community/gruvbox'
+  use 'airblade/vim-gitgutter'
+  use 'christoomey/vim-tmux-navigator'
+ 
+  use {
+    'nvim-telescope/telescope.nvim',
+    requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
+  }
+ 
+  use {
+    'hoob3rt/lualine.nvim',
+    requires = {'kyazdani42/nvim-web-devicons', opt = true}
+  }
+
+  use 'neovim/nvim-lspconfig'
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    requires = { 'neovim/nvim-lspconfig' },
+    run = ":TSUpdate"
+  }
+
+  -- completion
+  use 'hrsh7th/nvim-cmp'
+  use 'hrsh7th/cmp-nvim-lsp'
+
+  -- Automatically set up your configuration after cloning packer.nvim
+  -- Put this at the end after all plugins
+  if packer_bootstrap then
+    require('packer').sync()
+  end
+end)

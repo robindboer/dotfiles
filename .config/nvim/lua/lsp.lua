@@ -26,6 +26,5 @@ end
 local servers = { "jedi_language_server", "dockerls", "gopls", "html", "jsonls", "sqlls", "yamlls" }
 for _, lsp in ipairs(servers) do
     local capabilities = vim.lsp.protocol.make_client_capabilities()
-    capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
     nvim_lsp[lsp].setup { on_attach = on_attach, capabilities = capabilities, }
 end
