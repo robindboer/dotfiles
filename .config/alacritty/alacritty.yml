@@ -35,7 +35,4 @@ colors:
     white:   '#ebdbb2'
 
 font:
-  size: 10
-  normal:
-    family: Inconsolata-g
-    style: Regular
+  size: 14
