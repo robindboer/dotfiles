@@ -10,7 +10,7 @@ if fn.empty(fn.glob(install_path)) > 0 then
   packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
 end
 
-return require('packer').startup(function(use)
+require('packer').startup(function(use)
   use 'gruvbox-community/gruvbox'
   use 'airblade/vim-gitgutter'
   use 'christoomey/vim-tmux-navigator'
@@ -42,3 +42,5 @@ return require('packer').startup(function(use)
     require('packer').sync()
   end
 end)
+
+vim.cmd[[colorscheme gruvbox]]
