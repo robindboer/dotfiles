@@ -1,9 +1,5 @@
 vim.g.mapleader = ' '
 
-require('sets')
-require('telescope')
-require('lsp')
-
 local fn = vim.fn
 local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
 if fn.empty(fn.glob(install_path)) > 0 then
@@ -44,3 +40,7 @@ require('packer').startup(function(use)
 end)
 
 vim.cmd[[colorscheme gruvbox]]
+
+require('sets')
+require('telescope')
+require('lsp')
