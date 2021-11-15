@@ -126,10 +126,6 @@ export PATH="/usr/local/sbin:$PATH"
 # Add go bin to path
 export PATH="$PATH:$HOME/go/bin"
 
-# Add pyenv to path
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-
 # Evaluate pyenv variables for shims support
 if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
