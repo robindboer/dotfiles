@@ -28,10 +28,6 @@ require('packer').startup(function(use)
     run = ":TSUpdate"
   }
 
-  -- completion
-  use 'hrsh7th/nvim-cmp'
-  use 'hrsh7th/cmp-nvim-lsp'
-
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if packer_bootstrap then
@@ -40,6 +36,9 @@ require('packer').startup(function(use)
 end)
 
 vim.cmd[[colorscheme gruvbox]]
+
+vim.api.nvim_set_keymap('n', 'oo', 'o<Esc>k', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', 'OO', 'O<Esc>j', {noremap = true, silent = true})
 
 require('sets')
 require('telescope')
