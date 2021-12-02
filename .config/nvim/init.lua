@@ -15,7 +15,8 @@ require('packer').startup(function(use)
     'nvim-telescope/telescope.nvim',
     requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
   }
- 
+  use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+
   use {
     'hoob3rt/lualine.nvim',
     requires = {'kyazdani42/nvim-web-devicons', opt = true}
@@ -29,12 +30,14 @@ require('packer').startup(function(use)
   }
 
   use 'hrsh7th/nvim-cmp'
-  use 'hrsh7th/cmp-nvim-lsp'
   use 'hrsh7th/cmp-buffer'
   use 'hrsh7th/cmp-path'
-  use 'hrsh7th/cmp-cmdline'
+  use 'hrsh7th/cmp-nvim-lua'
+  use 'hrsh7th/cmp-nvim-lsp'
   use 'saadparwaiz1/cmp_luasnip'
-  use 'L3MON4D3/LuaSnip' -- Snippets plugin
+
+  use 'onsails/lspkind-nvim'
+
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if packer_bootstrap then
@@ -54,6 +57,12 @@ lualine.setup {
 	component_separators = '',
   }
 }
+
+-- Setup Telescope
+require('telescope').setup {}
+
+-- Setup Telescope fzf
+require('telescope').load_extension('fzf')
 
 -- Telescope key mappings 
 vim.api.nvim_set_keymap("n", "<C-p>", "<cmd>lua require('telescope.builtin').git_files()<cr>", {noremap = true, silent = true})
@@ -115,28 +124,21 @@ for _, lsp in ipairs(servers) do
   }
 end
 
--- luasnip setup
-local luasnip = require 'luasnip'
+local lspkind = require 'lspkind'
+lspkind.init()
 
 -- nvim-cmp setup
 local cmp = require 'cmp'
 cmp.setup {
-  snippet = {
-    expand = function(args)
-      luasnip.lsp_expand(args.body)
-    end,
-  },
   mapping = {
-    ['<C-p>'] = cmp.mapping.select_prev_item(),
-    ['<C-n>'] = cmp.mapping.select_next_item(),
     ['<C-d>'] = cmp.mapping.scroll_docs(-4),
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
-    ['<C-Space>'] = cmp.mapping.complete(),
     ['<C-e>'] = cmp.mapping.close(),
     ['<CR>'] = cmp.mapping.confirm {
-      behavior = cmp.ConfirmBehavior.Replace,
+      behavior = cmp.ConfirmBehavior.Insert,
       select = true,
     },
+    ['<C-Space>'] = cmp.mapping.complete(),
     ['<Tab>'] = function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
@@ -157,10 +159,31 @@ cmp.setup {
     end,
   },
   sources = {
+    { name = 'nvim_lua' },
     { name = 'nvim_lsp' },
-    { name = 'luasnip' },
-    { name = 'buffer' },
     { name = 'path' },
-    { name = 'cmdline' },
+    { name = 'luasnip' },
+    { name = 'buffer', keyword_length = 4 },
   },
+  snippet = {
+    expand = function(args)
+      require('luasnip').lsp_expand(args.body)
+    end,
+  },
+  formatting = {
+	format = lspkind.cmp_format {
+	  with_text = true,
+	  menu = {
+		buffer = "[buf]",
+		nvim_lsp = "[LSP]",
+		nvim_lua = "[api]",
+		path = "[path]",
+		luasnip = "[snip]",
+	  },
+    },
+  },
+  experimental = {
+    native_menu = false,
+    ghost_text = true,
+  }
 }
