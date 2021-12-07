@@ -59,7 +59,13 @@ lualine.setup {
 }
 
 -- Setup Telescope
-require('telescope').setup {}
+require('telescope').setup {
+    pickers = {
+        live_grep = {
+            find_command = { "rg", "--hidden" }
+        },
+    }
+}
 
 -- Setup Telescope fzf
 require('telescope').load_extension('fzf')
