@@ -35,7 +35,7 @@ require('packer').startup(function(use)
   use 'hrsh7th/cmp-nvim-lua'
   use 'hrsh7th/cmp-nvim-lsp'
   use 'saadparwaiz1/cmp_luasnip'
-
+  use 'L3MON4D3/LuaSnip'
   use 'onsails/lspkind-nvim'
 
   -- Automatically set up your configuration after cloning packer.nvim
@@ -134,6 +134,7 @@ local lspkind = require 'lspkind'
 lspkind.init()
 
 -- nvim-cmp setup
+local luasnip = require 'luasnip'
 local cmp = require 'cmp'
 cmp.setup {
   mapping = {
@@ -145,7 +146,7 @@ cmp.setup {
       select = true,
     },
     ['<C-Space>'] = cmp.mapping.complete(),
-    ['<Tab>'] = function(fallback)
+	['<Tab>'] = function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
       elseif luasnip.expand_or_jumpable() then
