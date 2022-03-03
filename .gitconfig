@@ -5,3 +5,6 @@
 	editor = nvim
 [init]
 	defaultBranch = master
+[commit]
+	template = /home/robin/.gitmessage
+	gpgsign = true
