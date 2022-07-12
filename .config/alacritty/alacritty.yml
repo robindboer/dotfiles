@@ -37,4 +37,15 @@ colors:
     white:   '#ebdbb2'
 
 font:
+  normal:
+    family: 'Source Code Pro'
+
+  bold:
+    family: 'Source Code Pro'
+    style: 'Bold'
+
+  italic:
+    family: 'Source Code Pro'
+    style: 'Italic'
+
   size: 11
