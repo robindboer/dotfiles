@@ -1,3 +1,10 @@
+# Set GPG_TTY environment variables as described in:
+# https://www.gnupg.org/documentation/manuals/gnupg/Invoking-GPG_002dAGENT.html
+export GPG_TTY=$(tty)
+
+# if on OSX add homebrew to path
+export PATH=/opt/homebrew/bin:$PATH
+
 # if tmux is executable, X is running, and not inside a tmux session, then try to attach.
 # if attachment fails, start a new session
 if [ -x "$(command -v tmux)" ]; then
@@ -103,9 +110,6 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-
-# if on OSX add homebrew to path
-export PATH=/opt/homebrew/bin:$PATH
 
 # Set default editor Neovim
 export EDITOR="nvim"
