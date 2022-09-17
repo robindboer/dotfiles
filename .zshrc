@@ -104,6 +104,9 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+# if on OSX add homebrew to path
+export PATH=/opt/homebrew/bin:$PATH
+
 # Set default editor Neovim
 export EDITOR="nvim"
 
