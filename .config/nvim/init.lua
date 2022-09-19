@@ -38,6 +38,8 @@ require('packer').startup(function(use)
   use 'L3MON4D3/LuaSnip'
   use 'onsails/lspkind-nvim'
 
+  use 'ray-x/go.nvim'
+
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if packer_bootstrap then
@@ -194,3 +196,8 @@ cmp.setup {
     ghost_text = true,
   }
 }
+
+require('go').setup()
+
+-- Run gofmt + goimport on save
+vim.api.nvim_exec([[ autocmd BufWritePre *.go :silent! lua require('go.format').goimport() ]], false)
