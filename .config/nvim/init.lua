@@ -12,7 +12,7 @@ require('packer').startup(function(use)
   use 'christoomey/vim-tmux-navigator'
  
   use {
-    'nvim-telescope/telescope.nvim',
+    'nvim-telescope/telescope.nvim', tag = '0.1.0',
     requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
   }
   use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
@@ -28,6 +28,8 @@ require('packer').startup(function(use)
     requires = { 'neovim/nvim-lspconfig' },
     run = ":TSUpdate"
   }
+
+  use 'simrat39/rust-tools.nvim'
 
   use 'hrsh7th/nvim-cmp'
   use 'hrsh7th/cmp-buffer'
@@ -121,10 +123,10 @@ end
 
 -- nvim-cmp adds some capabilities to lsp server
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
 -- Enable the following language servers
-local servers = { "jedi_language_server", "dockerls", "gopls", "html", "jsonls", "sqlls", "yamlls" }
+local servers = { "jedi_language_server", "dockerls", "gopls", "html", "jsonls", "sqlls", "yamlls", "rust_analyzer" }
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
     on_attach = on_attach,
