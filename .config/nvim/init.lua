@@ -7,7 +7,13 @@ if fn.empty(fn.glob(install_path)) > 0 then
 end
 
 require('packer').startup(function(use)
-  use 'gruvbox-community/gruvbox'
+  use({
+    'rose-pine/neovim',
+    as = 'rose-pine',
+    config = function()
+      vim.cmd('colorscheme rose-pine')
+      end
+  })
   use 'airblade/vim-gitgutter'
   use 'christoomey/vim-tmux-navigator'
  
@@ -49,14 +55,11 @@ require('packer').startup(function(use)
   end
 end)
 
-vim.cmd[[colorscheme gruvbox]]
-
 -- lualine setup
 local lualine = require('lualine')
 
 lualine.setup {
   options = {
-    theme = 'gruvbox',
 	section_separators = '',
 	component_separators = '',
   }
