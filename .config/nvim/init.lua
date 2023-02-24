@@ -6,6 +6,14 @@ if fn.empty(fn.glob(install_path)) > 0 then
   packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
 end
 
+local function map(mode, lhs, rhs, opts)
+    local options = { noremap = true }
+    if opts then
+        options = vim.tbl_extend("force", options, opts)
+    end
+    vim.api.nvim_set_keymap(mode, lhs, rhs, options)
+end
+
 require('packer').startup(function(use)
   use({
     'rose-pine/neovim',
@@ -34,6 +42,8 @@ require('packer').startup(function(use)
     requires = { 'neovim/nvim-lspconfig' },
     run = ":TSUpdate"
   }
+
+  use 'f-person/git-blame.nvim'
 
   use 'simrat39/rust-tools.nvim'
 
@@ -139,6 +149,13 @@ end
 
 local lspkind = require 'lspkind'
 lspkind.init()
+
+-- Git Blame
+vim.g.gitblame_date_format = '%r'
+
+map('n', "<Leader>gb", "<cmd>GitBlameToggle<cr>")
+map('n', "<Leader>gbo", "<cmd>GitBlameOpenCommitURL<cr>")
+
 
 -- nvim-cmp setup
 local luasnip = require 'luasnip'
