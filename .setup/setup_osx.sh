@@ -72,6 +72,7 @@ apps=(
 	"docker-compose"
 	"spotify"
 	"whatsapp"
+	"nvm"
 )
 
 for app in "${apps[@]}"
@@ -86,6 +87,13 @@ echo "All applications installed."
 brew tap homebrew/cask-fonts
 brew install --cask font-jetbrains-mono-nerd-font
 
+# Make nvm dir
+NVM_DIR="$HOME/.nvm"
+if [ ! -d "$NVM_DIR" ]; then
+    mkdir "$NVM_DIR"
+    echo "Directory created: $NVM_DIR"
+fi
+mkdir $HOME/.nvm
 
 # Import GPG Key
 VAULT_NAME="Personal"
