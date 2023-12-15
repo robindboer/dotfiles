@@ -13,6 +13,8 @@ defaults write com.apple.dock persistent-apps -array
 defaults write com.apple.dock autohide -bool true
 defaults write com.apple.dock show-recents -bool false
 defaults write com.apple.dock mineffect -string "scale"
+defaults write NSGlobalDomain KeyRepeat -int 1
+defaults write NSGlobalDomain InitialKeyRepeat -int 10
 
 # Reset the Dock to apply changes
 killall Dock
@@ -50,6 +52,8 @@ else
     echo "zsh-syntax-highlighting is already installed."
 fi
 
+source $HOME/.zshrc
+
 apps=(
     "1password"
 	"1password-cli"
@@ -64,6 +68,10 @@ apps=(
 	"gpg"
 	"ripgrep"
 	"slack"
+	"docker"
+	"docker-compose"
+	"spotify"
+	"whatsapp"
 )
 
 for app in "${apps[@]}"
@@ -102,6 +110,10 @@ fi
 # Import SSH keys
 ssh_keys=("id_rsa" "id_ecdsa")
 for key_name in "${ssh_keys[@]}"; do
+	if [ -f "$HOME/.ssh/$key_name" ]; then
+		continue
+	fi
+
     while IFS=' ' read -r document_uuid filename; do
         if [ -z "$document_uuid" ] || [ -z "$filename" ]; then
             echo "Error: Document $key_name not found."
@@ -120,4 +132,13 @@ if [ -d "$HOME/.rustup" ] || command -v rustup &> /dev/null; then
     echo "rustup is already installed."
 else
 	rustup-init
+fi
+
+
+# Setup dev dir
+DEV_DIR="$HOME/dev"
+if [ ! -d "$DEV_DIR" ]; then
+    # Create the directory
+    mkdir "$DEV_DIR"
+    echo "Directory created: $DEV_DIR"
 fi
