@@ -96,6 +96,7 @@ else
 
 	op documents get $gpg_key_document_id --out-file private.gpg
 	gpg --import private.gpg
+	rm private.gpg
 fi
 
 # Import SSH keys
