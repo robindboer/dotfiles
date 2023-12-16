@@ -16,6 +16,13 @@ defaults write com.apple.dock mineffect -string "scale"
 defaults write NSGlobalDomain KeyRepeat -int 1
 defaults write NSGlobalDomain InitialKeyRepeat -int 10
 
+# Disable hot corners
+hot_corners=("wvous-tl-corner" "wvous-tr-corner" "wvous-bl-corner" "wvous-br-corner")
+for corner in "${hot_corners[@]}"; do
+    defaults write com.apple.dock "$corner" -int 0
+    defaults write com.apple.dock "${corner}-modifier" -int 0
+done
+
 # Reset the Dock to apply changes
 killall Dock
 
