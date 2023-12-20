@@ -79,6 +79,13 @@ local plugin_specs = {
   },
 
   {
+    "lewis6991/gitsigns.nvim",
+    config = function()
+      require("config.gitsigns")
+    end,
+  },
+
+  {
     "tmux-plugins/vim-tmux",
     ft = { "tmux" },
   },
