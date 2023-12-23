@@ -62,7 +62,6 @@ local plugin_specs = {
   { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 
   {
-
     "nvim-lualine/lualine.nvim",
     event = "VeryLazy",
     config = function()
@@ -72,10 +71,10 @@ local plugin_specs = {
 
   {
     "nvimdev/dashboard-nvim",
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
     config = function()
       require("config.dashboard-nvim")
     end,
-	dependencies = { {'nvim-tree/nvim-web-devicons'}}
   },
 
   {
@@ -83,6 +82,15 @@ local plugin_specs = {
     config = function()
       require("config.gitsigns")
     end,
+  },
+
+  {
+    "nvim-tree/nvim-tree.lua",
+    keys = { "<space>s" },
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    config = function()
+      require("config.nvim-tree")
+    end
   },
 
   {

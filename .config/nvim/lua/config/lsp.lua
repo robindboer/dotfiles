@@ -33,6 +33,13 @@ if fn.executable(omnisharp_bin) > 0 then
   }
 end
 
+if fn.executable("typescript-language-server") > 0 then
+  lspconfig.tsserver.setup {
+    on_attach = custom_attach,
+    capabilities = capabilities,
+  }
+end
+
 fn.sign_define("DiagnosticSignError", { text = '🆇', texthl = "DiagnosticSignError" })
 fn.sign_define("DiagnosticSignWarn", { text = '⚠️', texthl = "DiagnosticSignWarn" })
 fn.sign_define("DiagnosticSignInfo", { text = 'ℹ️', texthl = "DiagnosticSignInfo" })
