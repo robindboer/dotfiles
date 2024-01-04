@@ -40,6 +40,20 @@ if fn.executable("typescript-language-server") > 0 then
   }
 end
 
+if fn.executable("rust-analyzer") > 0 then
+  lspconfig.rust_analyzer.setup{
+    on_attach = custom_attach,
+    capabilities = capabilities,
+    settings = {
+      ['rust-analyzer'] = {
+        diagnostics = {
+          enable = false;
+        }
+      }
+    }
+  }
+end
+
 fn.sign_define("DiagnosticSignError", { text = '🆇', texthl = "DiagnosticSignError" })
 fn.sign_define("DiagnosticSignWarn", { text = '⚠️', texthl = "DiagnosticSignWarn" })
 fn.sign_define("DiagnosticSignInfo", { text = 'ℹ️', texthl = "DiagnosticSignInfo" })

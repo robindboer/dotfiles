@@ -112,6 +112,8 @@ local plugin_specs = {
 
   { "sbdchd/neoformat", cmd = { "Neoformat" } },
 
+  { "tpope/vim-commentary", event = "VeryLazy" },
+
   { 
     "rose-pine/neovim",
 	name = "rose-pine",
