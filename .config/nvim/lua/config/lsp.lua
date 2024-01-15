@@ -24,12 +24,25 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 local lspconfig = require("lspconfig")
 
-local omnisharp_bin = "/usr/local/bin/omnisharp-roslyn/OmniSharp"
-if fn.executable(omnisharp_bin) > 0 then
+local omnisharp_paths = {
+  "/usr/local/bin/omnisharp-roslyn/OmniSharp",
+  "/usr/lib/omnisharp-roslyn/OmniSharp",
+}
+
+local omnisharp_bin
+
+for _, path in ipairs(omnisharp_paths) do
+  if fn.executable(path) > 0 then
+    omnisharp_bin = path
+    break
+  end
+end
+
+if omnisharp_bin then
   lspconfig.omnisharp.setup {
     on_attach = custom_attach,
     capabilities = capabilities,
-	cmd = { omnisharp_bin, "--languageserver", "--hostPID", tostring(fn.getpid()) },
+    cmd = { omnisharp_bin, "--languageserver", "--hostPID", tostring(fn.getpid()) },
   }
 end
 
