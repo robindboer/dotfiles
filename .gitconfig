@@ -1,10 +1,11 @@
 [user]
-	name = Robin de Boer
-	email = robindboer@gmail.com
+    name = Robin de Boer
+    email = robindboer@gmail.com
 [core]
-	editor = nvim
+    gpgProgram = gpg
+    editor = nvim
 [init]
-	defaultBranch = master
+    defaultBranch = master
 [commit]
-	template = /home/robin/.gitmessage
-	gpgsign = true
+    template = /home/robin/.gitmessage
+    gpgsign = true
