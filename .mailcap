@@ -1,0 +1,5 @@
+text/html; w3m -I %{charset} -T text/html; copiousoutput;
+text/plain; cat %s; nametemplate=%s.txt
+application/pdf; evince %s; nametemplate=%s.pdf
+image/jpeg; eog %s; nametemplate=%s.jpg
+
