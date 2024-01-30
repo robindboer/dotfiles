@@ -1,15 +1,73 @@
 # Source Gmail config
 source "gpg -dq ~/.mutt/gmail.gpg |"
 
-set ssl_force_tls = yes
-set abort_nosubject = no
+set ssl_force_tls
 set mail_check = 60
 set timeout = 10
-set sort = "reverse-date-received"
-set copy = no
+set sort=threads
+set sort_aux=reverse-last-date-received
+set strict_threads
+set fast_reply
+set smtp_authenticators = "login"
+set autoedit
+set edit_headers
+set editor="nvim"
+set send_charset="utf-8"
+set pager_index_lines=10
+set reply_to
+set pager_stop
+set menu_scroll
+set nohelp
+set pager_stop
+set smart_wrap
+set reverse_name
+set reverse_realname
 
-bind index g noop
+unset markers
+unset abort_nosubject
+unset copy
+unset recall
+unset wait_key
+
+set message_cache_dir="~/.mutt/message_cache"
+set header_cache="~/.mutt/header_cache"
+set tmpdir="~/.mutt/tmp"
+
+alternative_order text/plain text/enriched text/html
+auto_view text/html
+
+set status_format="%f%?V?/%V? [%m%?M?, %M shown?%?n?, %n new?%?o?, %o old?%?d?, %d deleted?%?F?, %F flagged?%?t?, %t tagged?%?p?, %p postponed?] %> %P"
+set compose_format=
+set attach_format="%T%?t?*?%<d?%d%>   [%m/%M, %e%?C?, %C?]  %4s&[%m/%M]%>   [%e%?C?, %C?]  %4s>"
+set pager_format="%s%*   %P"
+
+bind index,pager g noop
+bind index <Tab> collapse-thread
+bind index <BackTab> collapse-all
+bind index <Space> next-new-then-unread
+bind index gj next-entry
+bind index gk previous-entry
+bind index,browser gg first-entry
+bind index,browser G last-entry
+bind index,pager,browser  previous-line
+bind index,pager,browser  next-line
+bind index,pager,browser  half-up
+bind index,pager,browser  half-down
+bind pager j next-line
+bind pager k previous-line
+bind pager gg top
+bind pager G bottom
+bind index zb current-bottom
+bind index zz current-middle
+bind index zt current-top
+
 macro index gd "<change-folder>$postponed<enter>" "go to drafts"
 macro index gs "<change-folder>$record<enter>" "go to sent"
 macro index gi "<change-folder>$spoolfile<Enter>" "go to inbox"
-macro index gt "<change-folder>$trash<enter>" "go to trash""
+macro index gt "<change-folder>$trash<enter>" "go to trash"
+macro index ga "<change-folder>$my_archive<enter>" "go to archive"
+macro index,pager a "<save-message>$my_archive<enter>" "mark message as Archived"
+
+# gruvbox theme
+source ~/.config/mutt/colors-gruvbox-shuber.muttrc
+source ~/.config/mutt/colors-gruvbox-shuber-extended.muttrc
