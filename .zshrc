@@ -161,3 +161,8 @@ export PATH="$HOME/.poetry/bin:$PATH"
 # .NET
 export DOTNET_ROOT="~/.dotnet"
 export PATH="$PATH:~/.dotnet/tools"
+
+# Android
+export ANDROID_HOME=$HOME/Android/Sdk
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/platform-tools
