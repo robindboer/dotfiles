@@ -9,3 +9,5 @@
 [commit]
     template = /home/robin/.gitmessage
     gpgsign = true
+[alias]
+    staash = stash --all

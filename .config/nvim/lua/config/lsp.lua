@@ -12,7 +12,6 @@ local custom_attach = function(client, bufnr)
 
   map("n", "<leader>vd", vim.lsp.buf.definition, { desc = "go to definition" })
   map("n", "<leader>vrn", vim.lsp.buf.rename, { desc = "variable rename" })
-  map("n", "<leader>vr", vim.lsp.buf.references, { desc = "show references" })
   map("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "LSP code action" })
 
   if client.server_capabilities.documentFormattingProvider then
