@@ -30,6 +30,8 @@ set noshowmode
 
 set confirm
 
+set nohlsearch
+
 set visualbell noerrorbells
 set history=500
 
