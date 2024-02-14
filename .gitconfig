@@ -11,3 +11,11 @@
     gpgsign = true
 [alias]
     staash = stash --all
+[rerere]
+	enabled = true
+[column]
+	ui = auto
+[branch]
+	sort = --committerdate
+[maintenance]
+	repo = /Users/robin/dev/uMob
