@@ -1,21 +1,25 @@
 [user]
-    name = Robin de Boer
-    email = robindboer@gmail.com
+  name = Robin de Boer
+  email = robindboer@gmail.com
 [core]
-    gpgProgram = gpg
-    editor = nvim
+  gpgProgram = gpg
+  editor = nvim
 [init]
-    defaultBranch = master
+  defaultBranch = main
 [commit]
-    template = /home/robin/.gitmessage
-    gpgsign = true
-[alias]
-    staash = stash --all
+  template = /home/robin/.gitmessage
+  gpgsign = true
 [rerere]
-	enabled = true
+  enabled = true
 [column]
-	ui = auto
+  ui = auto
 [branch]
-	sort = --committerdate
-[maintenance]
-	repo = /Users/robin/dev/uMob
+  sort = --committerdate
+[push]
+  default = current
+  followtags = true
+[diff]
+  algorithm = histogram
+  context = 10
+[log]
+  date = iso
