@@ -63,7 +63,7 @@ source $HOME/.zshrc
 
 apps=(
     "1password"
-	"1password-cli"
+    "1password-cli"
     "pyenv"
     "rectangle"
     "alacritty"
@@ -71,15 +71,15 @@ apps=(
     "neovim"
     "google-chrome"
     "rustup"
-	"jq"
-	"gpg"
-	"ripgrep"
-	"slack"
-	"docker"
-	"docker-compose"
-	"spotify"
-	"whatsapp"
-	"nvm"
+    "jq"
+    "gpg"
+    "ripgrep"
+    "slack"
+    "docker"
+    "docker-compose"
+    "spotify"
+    "whatsapp"
+    "nvm"
 )
 
 for app in "${apps[@]}"
