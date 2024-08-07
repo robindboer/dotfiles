@@ -56,6 +56,11 @@ require("lazy").setup({
 		},
 	},
 	{
+		"tmux-plugins/vim-tmux",
+		ft = { "tmux" },
+	},
+	{ "christoomey/vim-tmux-navigator" },
+	{
 		"nvim-telescope/telescope.nvim",
 		event = "VimEnter",
 		branch = "0.1.x",
@@ -105,7 +110,7 @@ require("lazy").setup({
 
 					map("<leader>gd", require("telescope.builtin").lsp_definitions, "[G]oto [D]efinition")
 					map("<leader>gr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
-					map("<leader>gI", require("telescope.builtin").lsp_implementations, "[G]oto [I]mplementation")
+					map("<leader>gi", require("telescope.builtin").lsp_implementations, "[G]oto [I]mplementation")
 					map("<leader>D", require("telescope.builtin").lsp_type_definitions, "Type [D]efinition")
 					map("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
 					map("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction")
@@ -145,15 +150,7 @@ require("lazy").setup({
 				pyright = {},
 				rust_analyzer = {},
 				tsserver = {},
-				lua_ls = {
-					settings = {
-						Lua = {
-							completion = {
-								callSnippet = "Replace",
-							},
-						},
-					},
-				},
+				csharp_ls = {},
 			}
 			require("mason").setup()
 
