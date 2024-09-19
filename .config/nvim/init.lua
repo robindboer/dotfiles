@@ -17,6 +17,9 @@ vim.opt.inccommand = "split"
 vim.opt.cursorline = true
 vim.opt.scrolloff = 10
 
+vim.opt.list = true
+vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
+
 -- Keymaps
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>", {})
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, {})
@@ -90,6 +93,7 @@ require("lazy").setup({
 			vim.keymap.set("n", "<C-p>", builtin.git_files, {})
 			vim.keymap.set("n", "<leader>pf", builtin.find_files, {})
 			vim.keymap.set("n", "<leader>ps", builtin.live_grep, {})
+			vim.keymap.set("n", "<leader>pc", builtin.resume, {})
 		end,
 	},
 	{
@@ -149,7 +153,7 @@ require("lazy").setup({
 				gopls = {},
 				pyright = {},
 				rust_analyzer = {},
-				tsserver = {},
+				ts_ls = {},
 				csharp_ls = {},
 			}
 			require("mason").setup()
@@ -308,11 +312,11 @@ require("lazy").setup({
 				"vimdoc",
 			},
 			auto_install = true,
+			prefer_git = true,
 			highlight = {
 				enable = true,
-				additional_vim_regex_highlighting = { "ruby" },
 			},
-			indent = { enable = true, disable = { "ruby" } },
+			indent = { enable = true },
 		},
 		config = function(_, opts)
 			require("nvim-treesitter.install").prefer_git = true

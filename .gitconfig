@@ -13,8 +13,6 @@
   enabled = true
 [column]
   ui = auto
-[branch]
-  sort = --committerdate
 [push]
   default = current
   followtags = true
