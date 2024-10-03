@@ -27,6 +27,7 @@ vim.keymap.set("n", "<left>", "<Nop>", {})
 vim.keymap.set("n", "<right>", "<Nop>", {})
 vim.keymap.set("n", "<up>", "<Nop>", {})
 vim.keymap.set("n", "<down>", "<Nop>", {})
+vim.keymap.set("n", "<leader>kb", ":Neotree toggle<CR>", { noremap = true, silent = true })
 
 --vim.keymap.set("n", "<C-h>", "<C-w><C-h>", {})
 --vim.keymap.set("n", "<C-l>", "<C-w><C-l>", {})
@@ -56,6 +57,15 @@ require("lazy").setup({
 				topdelete = { text = "‾" },
 				changedelete = { text = "~" },
 			},
+		},
+	},
+	{
+		"nvim-neo-tree/neo-tree.nvim",
+		branch = "v3.x",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"nvim-tree/nvim-web-devicons",
+			"MunifTanjim/nui.nvim",
 		},
 	},
 	{
