@@ -1,0 +1,21 @@
+IMAPAccount gmail
+Host imap.gmail.com
+User robindboer@gmail.com
+PassCmd "gpg -q --for-your-eyes-only --no-tty -d ~/.gmailpass.gpg"
+TLSType IMAPS
+AuthMechs LOGIN
+
+IMAPStore gmail-remote
+Account gmail
+
+MaildirStore gmail-local
+SubFolders Verbatim
+Path ~/.mail/gmail/
+Inbox ~/.mail/gmail/inbox
+
+Channel gmail
+Far :gmail-remote:
+Near :gmail-local:
+Patterns *
+Create Both
+SyncState *
