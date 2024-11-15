@@ -1,0 +1,8 @@
+account gmail
+host smtp.gmail.com
+port 587
+from robindboer@gmail.com
+user robindboer@gmail.com
+passwordeval "gpg --quiet --for-your-eyes-only --no-tty --decrypt ~/.gmailpass.gpg"
+auth on
+tls on
