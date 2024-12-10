@@ -166,7 +166,19 @@ require("lazy").setup({
 			capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
 			local servers = {
 				gopls = {},
-				pyright = {},
+				pyright = {
+					settings = {
+						python = {
+							analysis = {
+								autoSearchPaths = true,
+								diagnosticMode = "workspace",
+								useLibraryCodeForTypes = true,
+							},
+							venvPath = ".",
+							pythonPath = ".venv/bin/python",
+						},
+					},
+				},
 				rust_analyzer = {},
 				ts_ls = {},
 				csharp_ls = {},
