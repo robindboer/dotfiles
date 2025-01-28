@@ -65,6 +65,22 @@ require("lazy").setup({
 	},
 	{
 		"nvim-neo-tree/neo-tree.nvim",
+		opts = {
+			filesystem = {
+				filtered_items = {
+					visible = true,
+					show_hidden_count = true,
+					hide_dotfiles = false,
+					hide_gitignored = true,
+					hide_by_name = {
+						-- '.git',
+						-- '.DS_Store',
+						-- 'thumbs.db',
+					},
+					never_show = {},
+				},
+			},
+		},
 		branch = "v3.x",
 		dependencies = {
 			"nvim-lua/plenary.nvim",
@@ -110,6 +126,11 @@ require("lazy").setup({
 			vim.keymap.set("n", "<leader>pw", builtin.grep_string, {})
 			vim.keymap.set("n", "<leader>pc", builtin.resume, {})
 		end,
+	},
+	{
+		"wurli/contextindent.nvim",
+		opts = { pattern = "*" },
+		dependencies = { "nvim-treesitter/nvim-treesitter" },
 	},
 	{
 		"neovim/nvim-lspconfig",
