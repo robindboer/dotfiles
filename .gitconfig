@@ -21,3 +21,5 @@
   context = 10
 [log]
   date = iso
+[help]
+	autocorrect = prompt

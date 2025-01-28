@@ -132,6 +132,7 @@ require("lazy").setup({
 					map("<leader>gi", require("telescope.builtin").lsp_implementations, "[G]oto [I]mplementation")
 					map("<leader>D", require("telescope.builtin").lsp_type_definitions, "Type [D]efinition")
 					map("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
+					map("<leader>t", vim.lsp.buf.hover, "[T]ype information")
 					map("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction")
 					map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
 
@@ -166,7 +167,19 @@ require("lazy").setup({
 			capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
 			local servers = {
 				gopls = {},
-				pyright = {},
+				pyright = {
+					settings = {
+						python = {
+							analysis = {
+								autoSearchPaths = true,
+								diagnosticMode = "workspace",
+								useLibraryCodeForTypes = true,
+							},
+							venvPath = ".",
+							pythonPath = ".venv/bin/python",
+						},
+					},
+				},
 				rust_analyzer = {},
 				ts_ls = {},
 				csharp_ls = {},
@@ -217,7 +230,7 @@ require("lazy").setup({
 			formatters_by_ft = {
 				lua = { "stylua" },
 				python = { "isort", "black" },
-				go = { "goimports", "gofmt" },
+				go = { "goimports", "gofumpt" },
 				rust = { "rustfmt" },
 			},
 		},

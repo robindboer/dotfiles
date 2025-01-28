@@ -1,5 +1,5 @@
 # Source Gmail config
-source "gpg -dq ~/.mutt/gmail.gpg |"
+source "gpg -dq ~/.mutt/gmail.gpg 2>/dev/null |"
 
 set ssl_force_tls
 set mail_check = 60

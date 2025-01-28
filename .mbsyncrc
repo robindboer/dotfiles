@@ -1,7 +1,7 @@
 IMAPAccount gmail
 Host imap.gmail.com
 User robindboer@gmail.com
-PassCmd "gpg -q --for-your-eyes-only --no-tty -d ~/.gmailpass.gpg"
+PassCmd "gpg -q --for-your-eyes-only --no-tty -d ~/.gmailpass.gpg 2> /dev/null"
 TLSType IMAPS
 AuthMechs LOGIN
 
