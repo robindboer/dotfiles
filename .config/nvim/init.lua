@@ -1,5 +1,7 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
+vim.g.loaded_netrw = 0
+vim.g.loaded_netrwPlugin = 0
 
 -- Options
 vim.opt.number = true
@@ -31,6 +33,10 @@ vim.keymap.set("n", "<left>", "<Nop>", {})
 vim.keymap.set("n", "<right>", "<Nop>", {})
 vim.keymap.set("n", "<up>", "<Nop>", {})
 vim.keymap.set("n", "<down>", "<Nop>", {})
+vim.keymap.set("i", "<left>", "<Nop>", {})
+vim.keymap.set("i", "<right>", "<Nop>", {})
+vim.keymap.set("i", "<up>", "<Nop>", {})
+vim.keymap.set("i", "<down>", "<Nop>", {})
 vim.keymap.set("n", "<leader>kb", ":Neotree toggle<CR>", { noremap = true, silent = true })
 
 --vim.keymap.set("n", "<C-h>", "<C-w><C-h>", {})
@@ -66,6 +72,7 @@ require("lazy").setup({
 	{
 		"nvim-neo-tree/neo-tree.nvim",
 		opts = {
+			close_if_last_window = true,
 			filesystem = {
 				filtered_items = {
 					visible = true,
@@ -332,6 +339,20 @@ require("lazy").setup({
 	},
 
 	{
+		"f-person/git-blame.nvim",
+		event = "VeryLazy",
+		opts = {
+			enabled = true,
+			message_template = " <date> • <author> ",
+			date_format = "%d-%m-%Y %H:%M:%S",
+			virtual_text_column = 1,
+			delay = 1500,
+		},
+		config = function()
+			vim.keymap.set("n", "<leader>gbo", ":GitBlameOpenCommitURL<CR>", {})
+		end,
+	},
+	{
 		"echasnovski/mini.nvim",
 		config = function()
 			require("mini.ai").setup({ n_lines = 500 })
@@ -346,30 +367,36 @@ require("lazy").setup({
 	{
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
-		opts = {
-			ensure_installed = {
-				"bash",
-				"c",
-				"diff",
-				"html",
-				"lua",
-				"luadoc",
-				"markdown",
-				"markdown_inline",
-				"query",
-				"vim",
-				"vimdoc",
-			},
-			auto_install = true,
-			prefer_git = true,
-			highlight = {
-				enable = true,
-			},
-			indent = { enable = true },
-		},
-		config = function(_, opts)
-			require("nvim-treesitter.install").prefer_git = true
-			require("nvim-treesitter.configs").setup(opts)
+		branch = "main",
+		lazy = false,
+		config = function()
+			require("nvim-treesitter.configs").setup({
+				ensure_installed = {
+					"bash",
+					"c",
+					"diff",
+					"html",
+					"lua",
+					"luadoc",
+					"markdown",
+					"markdown_inline",
+					"query",
+					"vim",
+					"vimdoc",
+					"go",
+					"c_sharp",
+					"python",
+					"rust",
+					"gitcommit",
+					"terraform",
+					"yaml",
+				},
+				sync_install = false,
+				highlight = {
+					enable = true,
+				},
+				indent = { enable = true },
+			})
 		end,
 	},
 }, {})
