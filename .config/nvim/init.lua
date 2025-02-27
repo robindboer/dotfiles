@@ -208,6 +208,7 @@ require("lazy").setup({
 						},
 					},
 				},
+				lua_ls = {},
 				rust_analyzer = {},
 				ts_ls = {},
 				csharp_ls = {},
