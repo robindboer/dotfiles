@@ -2,6 +2,12 @@
 # https://www.gnupg.org/documentation/manuals/gnupg/Invoking-GPG_002dAGENT.html
 export GPG_TTY=$(tty)
 
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    export PINENTRY_PATH="/opt/homebrew/bin/pinentry-mac"
+else
+    export PINENTRY_PATH="/usr/bin/pinentry-tty"
+fi
+
 # if on OSX add homebrew to path
 export PATH=/opt/homebrew/bin:$PATH
 
@@ -117,13 +123,6 @@ export EDITOR="nvim"
 alias ssh='TERM=xterm-256color \ssh'
 alias nv="nvim"
 
-# Add the path to the pure prompt to the fpath
-fpath+=$HOME/.zsh/pure
-
-# Initialize and load the pure prompt
-autoload -U promptinit; promptinit
-prompt pure
-
 # Add npm bin to path
 export PATH=~/.npm-global/bin:$PATH
 
@@ -169,3 +168,6 @@ export PATH=$PATH:$ANDROID_HOME/platform-tools
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
+export PATH="/usr/local/opt/libpq/bin:$PATH"
+
+eval "$(starship init zsh)"
