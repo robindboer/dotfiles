@@ -17,7 +17,7 @@ fi
 
 export ZSH=$HOME/.oh-my-zsh
 ZSH_THEME=""
-plugins=(git zsh-completions zsh-syntax-highlighting)
+plugins=(git zsh-completions zsh-syntax-highlighting pyautoenv)
 source $ZSH/oh-my-zsh.sh
 
 export EDITOR="nvim"
