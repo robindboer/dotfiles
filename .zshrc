@@ -46,6 +46,4 @@ fi
 [ -s "$NVM_SH" ] && \. "$NVM_SH"
 [ -s "$NVM_BASH_COMPLETION" ] && \. "$NVM_BASH_COMPLETION"
 
-export DOTNET_ROOT="$HOME/.dotnet"
-
 eval "$(starship init zsh)"
