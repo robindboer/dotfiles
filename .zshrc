@@ -23,6 +23,7 @@ source $ZSH/oh-my-zsh.sh
 export EDITOR="nvim"
 alias ssh='TERM=xterm-256color \ssh'
 alias nv="nvim"
+alias hn="clx"
 alias k="kubectl"
 
 __git_files () {
@@ -35,8 +36,15 @@ if type rg &> /dev/null; then
 fi
 
 export NVM_DIR="$HOME/.nvm"
-[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"
-[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
+if [[ "$(uname)" == "Darwin" ]]; then
+  NVM_SH="/opt/homebrew/opt/nvm/nvm.sh"
+  NVM_BASH_COMPLETION="/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
+else
+  NVM_SH="$NVM_DIR/nvm.sh"
+  NVM_BASH_COMPLETION="$NVM_DIR/bash_completion"
+fi
+[ -s "$NVM_SH" ] && \. "$NVM_SH"
+[ -s "$NVM_BASH_COMPLETION" ] && \. "$NVM_BASH_COMPLETION"
 
 export DOTNET_ROOT="$HOME/.dotnet"
 
