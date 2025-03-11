@@ -369,7 +369,9 @@ require("lazy").setup({
 	},
 	{
 		"nvim-treesitter/nvim-treesitter",
-		build = ":TSUpdate",
+		build = function()
+			vim.cmd("TSUpdate")
+		end,
 		main = "nvim-treesitter.configs",
 		opts = {
 			ensure_installed = {
@@ -393,6 +395,7 @@ require("lazy").setup({
 				"yaml",
 			},
 			sync_install = false,
+			auto_install = true,
 			highlight = {
 				enable = true,
 			},
