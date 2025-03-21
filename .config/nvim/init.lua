@@ -158,7 +158,7 @@ require("lazy").setup({
 					map("<leader>gd", require("telescope.builtin").lsp_definitions, "[G]oto [D]efinition")
 					map("<leader>gr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
 					map("<leader>gi", require("telescope.builtin").lsp_implementations, "[G]oto [I]mplementation")
-					map("<leader>D", require("telescope.builtin").lsp_type_definitions, "Type [D]efinition")
+					map("<leader>d", require("telescope.builtin").lsp_type_definitions, "Type [D]efinition")
 					map("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
 					map("<leader>t", vim.lsp.buf.hover, "[T]ype information")
 					map("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction")
@@ -263,6 +263,27 @@ require("lazy").setup({
 				rust = { "rustfmt" },
 			},
 		},
+	},
+	{
+		"ThePrimeagen/harpoon",
+		branch = "harpoon2",
+		dependencies = { "nvim-lua/plenary.nvim" },
+		config = function()
+			local harpoon = require("harpoon")
+			harpoon:setup()
+			vim.keymap.set("n", "<leader>a", function()
+				harpoon:list():add()
+			end)
+			vim.keymap.set("n", "<leader>e", function()
+				harpoon.ui:toggle_quick_menu(harpoon:list())
+			end)
+			vim.keymap.set("n", "<leader>p", function()
+				harpoon:list():prev()
+			end)
+			vim.keymap.set("n", "<leader>n", function()
+				harpoon:list():next()
+			end)
+		end,
 	},
 	{
 		"hrsh7th/nvim-cmp",
