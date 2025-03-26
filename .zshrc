@@ -32,7 +32,7 @@ __git_files () {
 
 if type rg &> /dev/null; then
   export FZF_DEFAULT_COMMAND='rg --files --hidden'
-  export FZF_DEFAULT_OPTS='-m --height 50% --border'
+  export FZF_DEFAULT_OPTS='-m --tmux center --border'
 fi
 
 export NVM_DIR="$HOME/.nvm"
@@ -45,5 +45,14 @@ else
 fi
 [ -s "$NVM_SH" ] && \. "$NVM_SH"
 [ -s "$NVM_BASH_COMPLETION" ] && \. "$NVM_BASH_COMPLETION"
+
+if [[ "$(uname)" == "Darwin" ]]; then
+  [ -f "$(brew --prefix)/opt/fzf/shell/key-bindings.zsh" ] && source "$(brew --prefix)/opt/fzf/shell/key-bindings.zsh"
+  [ -f "$(brew --prefix)/opt/fzf/shell/completion.zsh" ] && source "$(brew --prefix)/opt/fzf/shell/completion.zsh"
+else
+  [ -f /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh
+  [ -f /usr/share/fzf/completion.zsh ] && source /usr/share/fzf/completion.zsh
+fi
+export FZF_CTRL_R_OPTS="--tmux center --layout=reverse"
 
 eval "$(starship init zsh)"
