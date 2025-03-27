@@ -261,6 +261,7 @@ require("lazy").setup({
 				python = { "isort", "black" },
 				go = { "goimports", "gofumpt" },
 				rust = { "rustfmt" },
+				cs = { "csharpier" },
 			},
 		},
 	},
