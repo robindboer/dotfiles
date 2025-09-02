@@ -17,9 +17,14 @@
 [push]
   default = current
   followtags = true
+[pull]
+  rebase = true
 [diff]
   algorithm = histogram
   context = 10
+[rebase]
+  autoStash = true
+  updateRefs = true
 [log]
   date = iso
 [help]

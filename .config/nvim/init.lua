@@ -74,6 +74,7 @@ require("lazy").setup({
 		opts = {
 			close_if_last_window = true,
 			filesystem = {
+				hijack_netrw_behavior = "disabled",
 				filtered_items = {
 					visible = true,
 					show_hidden_count = true,
