@@ -140,6 +140,7 @@ require("lazy").setup({
 		opts = { pattern = "*" },
 		dependencies = { "nvim-treesitter/nvim-treesitter" },
 	},
+	{ "seblyng/roslyn.nvim", opts = {} },
 	{
 		"neovim/nvim-lspconfig",
 		dependencies = {
@@ -212,10 +213,14 @@ require("lazy").setup({
 				lua_ls = {},
 				rust_analyzer = {},
 				ts_ls = {},
-				csharp_ls = {},
+				roslyn = {},
 			}
-			require("mason").setup()
-
+			require("mason").setup({
+				registries = {
+					"github:mason-org/mason-registry",
+					"github:Crashdummyy/mason-registry",
+				},
+			})
 			local ensure_installed = vim.tbl_keys(servers or {})
 			vim.list_extend(ensure_installed, {
 				"stylua",
@@ -376,6 +381,7 @@ require("lazy").setup({
 		},
 		config = function()
 			vim.keymap.set("n", "<leader>gbo", ":GitBlameOpenCommitURL<CR>", {})
+			vim.keymap.set("n", "<leader>go", ":GitBlameOpenFileURL<CR>", {})
 		end,
 	},
 	{
