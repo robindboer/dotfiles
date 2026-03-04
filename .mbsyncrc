@@ -1,21 +1,22 @@
-IMAPAccount gmail
-Host imap.gmail.com
-User robindboer@gmail.com
-PassCmd "gpg -q --for-your-eyes-only --no-tty -d ~/.gmailpass.gpg 2> /dev/null"
+# Mailbox.org
+IMAPAccount mailboxorg
+Host imap.mailbox.org
+User robin@hirobin.nl
+PassCmd "gpg -q --for-your-eyes-only --no-tty -d ~/.mailboxorgpass.gpg 2> /dev/null"
 TLSType IMAPS
 AuthMechs LOGIN
 
-IMAPStore gmail-remote
-Account gmail
+IMAPStore mailboxorg-remote
+Account mailboxorg
 
-MaildirStore gmail-local
+MaildirStore mailboxorg-local
 SubFolders Verbatim
-Path ~/.mail/gmail/
-Inbox ~/.mail/gmail/inbox
+Path ~/.mail/mailboxorg/
+Inbox ~/.mail/mailboxorg/inbox
 
-Channel gmail
-Far :gmail-remote:
-Near :gmail-local:
+Channel mailboxorg
+Far :mailboxorg-remote:
+Near :mailboxorg-local:
 Patterns *
 Create Both
 SyncState *
