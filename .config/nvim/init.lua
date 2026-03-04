@@ -38,6 +38,7 @@ vim.keymap.set("i", "<right>", "<Nop>", {})
 vim.keymap.set("i", "<up>", "<Nop>", {})
 vim.keymap.set("i", "<down>", "<Nop>", {})
 vim.keymap.set("n", "<leader>kb", ":Neotree toggle<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>kr", ":Neotree reveal<CR>", { noremap = true, silent = true })
 
 --vim.keymap.set("n", "<C-h>", "<C-w><C-h>", {})
 --vim.keymap.set("n", "<C-l>", "<C-w><C-l>", {})
@@ -75,6 +76,9 @@ require("lazy").setup({
 			close_if_last_window = true,
 			filesystem = {
 				hijack_netrw_behavior = "disabled",
+				follow_current_file = {
+					enabled = false,
+				},
 				filtered_items = {
 					visible = true,
 					show_hidden_count = true,
