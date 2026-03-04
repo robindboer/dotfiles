@@ -18,5 +18,7 @@ Channel mailboxorg
 Far :mailboxorg-remote:
 Near :mailboxorg-local:
 Patterns *
+Sync All
 Create Both
+Expunge Both
 SyncState *

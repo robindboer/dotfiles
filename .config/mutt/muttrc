@@ -41,7 +41,8 @@ set my_junk="~/.mail/mailboxorg/Junk"
 # Default account settings
 set from="Robin de Boer <mail@hirobin.nl>"
 set realname="Robin de Boer"
-set smtp_url="smtps://mail@hirobin.nl@smtp.mailbox.org:465/"
+set smtp_url="smtps://robin@hirobin.nl@smtp.mailbox.org:465/"
+set smtp_pass=`gpg -dq ~/.mailboxorgpass.gpg 2>/dev/null`
 
 push "<shell-escape>~/.mutt/sync-mail.sh<enter>"
 
